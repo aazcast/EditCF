@@ -19,24 +19,15 @@
         } else {
             _elem.append('<div id="editionTools"></div><div id="editor" contenteditable></div>');
             //creamos los botones para editar
-            $('#editionTools').append('<button id="bold">Bold</button><button id="italic">Italic</button><button id="h1">H1</button>')
+            $('#editionTools').append('<button class="btnEdit" id="bold">Bold</button><button class="btnEdit" id="italic">Italic</button><button class="btnEditformat" id="h1">H1</button>')
             
-            //bold
-            $('#bold').on('click', function(e) {
-                document.execCommand('bold',false,null);
-                console.log('bold')
+            //bold - italic
+            $('.btnEdit').on('click', function() {
+                document.execCommand(this.id,false,null);
             })
-
-            //italic
-            $('#italic').on('click', function(e) {
-                document.execCommand('italic',false,null);
-                console.log('italic')
-            })
-
             //h1
-            $('#h1').on('click', function(e) {
-                document.execCommand('formatBlock',false,'h1');
-                console.log('h1')
+            $('.btnEditformat').on('click', function() {
+                document.execCommand('formatBlock',false,this.id);
             })
         }
     }
