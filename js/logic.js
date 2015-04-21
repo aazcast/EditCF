@@ -13,21 +13,27 @@
     }
 
     var init = function (_elem, _tools){
-
+        //Si tools es negativo no creamos el edition tools.
         if (!_tools) {
             _elem.append('<div id="editor" contenteditable></div>');
         } else {
             _elem.append('<div id="editionTools"></div><div id="editor" contenteditable></div>');
-            
+            //creamos los botones para editar
             $('#editionTools').append('<button id="bold">Bold</button><button id="italic">Italic</button><button id="h1">H1</button>')
+            
+            //bold
             $('#bold').on('click', function(e) {
                 document.execCommand('bold',false,null);
                 console.log('bold')
             })
+
+            //italic
             $('#italic').on('click', function(e) {
                 document.execCommand('italic',false,null);
                 console.log('italic')
             })
+
+            //h1
             $('#h1').on('click', function(e) {
                 document.execCommand('formatBlock',false,'h1');
                 console.log('h1')
