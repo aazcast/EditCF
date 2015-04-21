@@ -1,6 +1,6 @@
 (function($){
     //Definimos el Plugin
-    $.fn.editorcenfo = function(options) {
+    $.fn.editCF = function(options) {
         var $elm = this;
 
         //definimos las variables por default
