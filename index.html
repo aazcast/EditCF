@@ -23,7 +23,15 @@
     <script>
     $('.editable').editCF({
         'editionTools' : true,
-        'onSaved' : true
+        'saveData' : true,
+        callback : function (data) {
+            // data is a JSON object
+            // console.log(data);
+
+            if (localStorage.getItem("EditCF")) {
+                console.log(JSON.parse(localStorage.getItem("EditCF")));
+            }
+        }
     });
     </script>
 </body>
