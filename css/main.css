@@ -12,7 +12,7 @@
 }
 
 #editionTools {
-    max-width: 720px;
+    max-width: 870px;
     margin: 10px auto;
 }
 
@@ -32,7 +32,7 @@
     background-color: #fff;
 }
 #editionTools .btn-edition:focus {
-    
+  outline: 1px solid #ddd;
 }
 #editionTools .btn-edition:hover {
     background: #e2e2e2;
@@ -70,3 +70,13 @@ body {
     background: #fff;
 }
 
+.container {
+  position: relative;
+}
+
+.fa.rotate-icon-right {
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+}

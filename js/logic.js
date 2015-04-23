@@ -35,14 +35,14 @@
 
         var $container = $("#editionTools"),
             // 0 = Texto del button & 1 = Acción que ejecutará en el document.execCommand();
-            $tools = [["Heading 1","h1"],["Heading 2","h2"], ["Bold","bold"], ["Paragraph","p"], ["Underline","underline"],["Strike Through","strikeThrough"],["Center","justifyCenter"],["Undo","undo"],["Redo","redo"]];
+            $tools = [["Heading <span><i class='fa fa-header'></i><sup>1</sup></span>","h1"],["Heading <span><i class='fa fa-header'></i><sup>2</sup></span>","h2"], ["Bold <i class='fa fa-bold'></i>","bold"], ["Paragraph <i class='fa fa-paragraph'></i>","p"], ["Underline <i class='fa fa-underline'></i>","underline"],["Strike Through <i class='fa fa-strikethrough'></i>","strikeThrough"],["Center <i class='fa fa-align-center'></i>","justifyCenter"],["Undo <i class='fa fa-undo'></i>","undo"],["Redo <i class='fa fa-undo rotate-icon-right'></i>","redo"]];
 
         // alert(tools.length);
 
         $.each($tools, function (i, v) {
             var $btnTool = $("<button class='btn-edition'></button>");
 
-            $btnTool.text(v[0]);
+            $btnTool.html(v[0]);
             $btnTool.attr("data-action", v[1]);
 
             $container.append($btnTool);
@@ -110,12 +110,48 @@
                                         return M.join(" ");
                                     })();
 
+        if (($editor.contents()[0]).nodeType === 3) {
+            var $textNode = ($editor.contents()[0]).nodeValue,
+                $node = {};
+
+            // console.log($textNode);
+
+            $node.element = "P";
+            $node.content = $textNode;
+
+            // console.log($node);
+
+            ($EditCF_data.data).push($node);
+        }
+
+
         $content.each(function () {
             // console.log(this);
             var $item = {};
 
-            $item.element = this.nodeName,
+            $item.element = this.nodeName;
             $item.content = this.innerHTML;
+
+            if ($(this).attr("style")) {
+                $item.style = [];
+
+                var $styleTxt = $(this).attr("style"),
+                    $styleObj = {};
+
+                var $inlineCss = {},
+                    $css = $styleTxt.split(":"),
+                    $property = $css[0],
+                    $value = ($.trim($css[1])).replace(";", "");
+
+                // console.log($property, $value);
+
+                $styleObj.property = $property;
+                $styleObj.value = $value;
+
+                // console.log($styleObj);
+
+                ($item.style).push($styleObj);
+            }
 
             ($EditCF_data.data).push($item);
         });
@@ -146,4 +182,3 @@
         }
     }
 }(jQuery));
-
