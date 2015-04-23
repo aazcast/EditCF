@@ -24,15 +24,6 @@
             createEditionButtons(_elem);
 
             // $('#editionTools').append('<button class="btnEdit" id="bold">Bold</button><button class="btnEdit" id="italic">Italic</button><button class="btnEditformat" id="h1">H1</button>');
-
-            //bold - italic
-            $('.btnEdit').on('click', function() {
-                document.execCommand(this.id,false,null);
-            })
-            //h1
-            $('.btnEditformat').on('click', function() {
-                document.execCommand('formatBlock',false,this.id);
-            })
         }
 
         createSaveButton(_elem);
@@ -44,7 +35,7 @@
 
         var $container = $("#editionTools"),
             // 0 = Texto del button & 1 = Acción que ejecutará en el document.execCommand();
-            $tools = [["Heading 1","h1"], ["Bold","bold"], ["Paragraph","p"]];
+            $tools = [["Heading 1","h1"],["Heading 2","h2"], ["Bold","bold"], ["Paragraph","p"], ["Underline","underline"],["Strike Through","strikeThrough"],["Center","justifyCenter"],["Undo","undo"],["Redo","redo"]];
 
         // alert(tools.length);
 
@@ -65,6 +56,17 @@
         // alert($role);
 
         // insertar switch para manejar excepciones $role del document.execCommand();
+        //Ejecutar botones
+        switch($role) {
+            case 'h1':
+            case 'h2':
+            case 'p':
+              document.execCommand('formatBlock', false, $role);
+              break;
+            default:
+              document.execCommand($role, false, null);
+              break;
+        }
     }
 
     // Creamos el buton de guardar contenido

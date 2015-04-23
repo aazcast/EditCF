@@ -10,3 +10,63 @@
 [contenteditable]:focus {
   outline:0px;
 }
+
+#editionTools {
+    max-width: 720px;
+    margin: 10px auto;
+}
+
+#editionTools .btn-edition {
+     display: inline-block;
+      padding: 6px 12px;
+      margin-bottom: 0;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.42857143;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      border: 1px solid #ccc;
+        color: #333;
+    background-color: #fff;
+}
+#editionTools .btn-edition:focus {
+    
+}
+#editionTools .btn-edition:hover {
+    background: #e2e2e2;
+}
+
+#editionTools .btn-edition:first-child {
+    -webkit-border-radius: 5px 0 0 5px;
+            border-radius: 5px 0 0 5px;
+}
+
+#editionTools .btn-edition:last-child {
+    -webkit-border-radius: 0 5px 5px 0;
+            border-radius: 0 5px 5px 0;
+}
+
+#view-content {
+    background: #277ec8;
+    padding: 4px 20px;
+    -webkit-border-radius: 5px;
+            border-radius: 5px;
+    border: 0px;
+    color: #fff;
+    float: left;
+    transition: all 1s;
+}
+
+#view-content:hover {
+    background: #0f5692;
+}
+
+.container > h1 {
+    text-align: center;
+}
+body {
+    background: #fff;
+}
+
